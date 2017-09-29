@@ -1,52 +1,62 @@
-<h1>Burgers!</h1>
 
+<center>
+  <h1>Eat-DA-Burger!</h1>
+  <img src="../public/assets/img/eatDatBurger.jpg">
+</center>
+<div class="container">
+  <div class="row">
+    <div class="col">
 <h2>Burgers that have not been devoured!</h2>
 
 <ul>
   {{#each burgers}}
     {{#unless this.devoured}}
-      <li>
+      <li><span>
+       {{this.id}}
         {{this.burger_name}}
-
-        <form action="/{{this.id}}?_method=PUT" method="POST">
+      </span>
+        <form action="/{{this.id}}?_method=PUT" method="POST" id="D-button">
           <input type="hidden" name="devoured" value="true">
-          <button type="submit">Devour!</button>
+          <button type="submit">Devour It!</button>
         </form>
       </li>
+{{!--               <form action="/{{this.id}}?_method=PUT" method="POST">
+          <input type="hidden" name="devoured" value="true">
+          <button type="submit">Devour It!</button>
+        </form> --}}
     {{/unless}}
   {{/each}}
 </ul>
 
+    </div>
+    <div class="col">
 <h2>Burgers that have been Devoured!</h2>
 
 <ul>
   {{#each burgers}}
     {{#if this.devoured}}
       <li>
+       {{this.id}}
         {{this.burger_name}}
 
-        <form action="/{{this.id}}?_method=PUT" method="POST">
-          <input type="hidden" name="devoured" value="false">
-          <button type="submit">Un-devour!</button>
-        </form>
       </li>
     {{/if}}
   {{/each}}
 </ul>
 
-<h2>Add a Cat</h2>
+    </div>
+  </div>
+</div>
+
+
+<center>
 <form class="create-update-form" action="/" method="POST">
 
   <div class="form-group">
-    <label for="ca">Burger Name:</label>
     <input type="text" id="ca" name="burger_name">
   </div>
 
-  <div class="form-group">
-    <label for="slee">Sleepy?</label><br>
-    <input type="radio" name="devoured" value="1" checked> Devoured!<br>
-    <input type="radio" name="devoured" value="0"> Not Devoured
-  </div>
-
-  <button type="submit">Add Burger</button>
+Enter a Burger you would like to eat then hit the "Submit" button!<br>
+  <button type="submit" class="btn-primary">Submit</button>
 </form>
+</center>
