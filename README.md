@@ -1,4 +1,4 @@
-#Eat Da Burger App
+# Eat Da Burger App
 
 
 **App General Functionality**
